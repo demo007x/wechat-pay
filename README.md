@@ -10,7 +10,10 @@ NodeJs 微信公众号功能开发,移动端 H5页面调用微信的支付功能
 
 #### 一.请求CODE
 
-    请求 code 的目的就是获取用户的 openid（用户相对于当前公众号的唯一标识） 和access_token，请求的 **API**：https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect
+请求 code 的目的就是获取用户的 openid（用户相对于当前公众号的唯一标识） 和access_token，请求的 **API**：
+
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect
+
 此 api 需要注意几个参数：
 
     1.  appid公众号的 appid，可以在公众号中看到
