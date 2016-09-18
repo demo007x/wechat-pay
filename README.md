@@ -8,7 +8,7 @@ NodeJs 微信公众号功能开发,移动端 H5页面调用微信的支付功能
 
 ----------
 
-###### 一.请求CODE
+#### 一.请求CODE
 请求 code 的目的就是获取用户的 openid（用户相对于当前公众号的唯一标识） 和access_token，请求的 **API**：https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect
 此 api 需要注意几个参数：
 
@@ -23,7 +23,7 @@ ps：官网链接：
 
 
 ----------
-###### 二.通过code获取access_token,openid
+#### 二.通过code获取access_token,openid
 第一步已经获取到了 code 的值了， 那么接下来就需要通过 code 来获取 access_token,openid的值了，请求的 api
 **API** https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code
 此处api 的参数说明：
@@ -41,7 +41,7 @@ access_token 可以做后续的功能， 可以参考官方的例子：
 
 --------
 
-###### 四.网页端调起支付API
+#### 四.网页端调起支付API
 看见这个是不是感觉快完事儿了， 只要网页端调用微信支付功能就完事儿了？no，还差点
 在微信浏览器里面打开H5网页中执行JS调起支付。接口输入输出数据格式为JSON。
 注意：WeixinJSBridge内置对象在其他浏览器中无效。
@@ -97,7 +97,7 @@ ps: 官网接口说明
 [https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_7&index=6][2]
 
 --------
-###### 五.获取package， 从微信的 统一下单 接口获取prepay_id
+#### 五.获取package， 从微信的 统一下单 接口获取prepay_id
 官方 api： 
 [https://api.mch.weixin.qq.com/pay/unifiedorder][3]
 
@@ -154,7 +154,7 @@ api ： https://api.mch.weixin.qq.com/pay/unifiedorder
 
 --------
 
-###### 六. 获取到了prepay_id是不是就可以在 h5 段直接调用微信的支付了么？ 答案是还不可以。
+#### 六. 获取到了prepay_id是不是就可以在 h5 段直接调用微信的支付了么？ 答案是还不可以。
 获取到了prepay_id那么现在h5 呼起微信的支付功能的参数是这样的：
 
     {
@@ -181,7 +181,7 @@ api ： https://api.mch.weixin.qq.com/pay/unifiedorder
 
 --------
 
-###### 7.支付完成的回调
+#### 7.支付完成的回调
 微信支付完了后会在 h5 页面的微信支付的回调函数里面放回值，
 res.err_msg == "get_brand_wcpay_request：ok" ，这样就是成功了， 但是不是就完事儿了呢 ？ 也不是，为什么呢？ 微信真的收到钱了么？ 收到的钱是不是你传递给微信的值呢 ？你还需要将支付的结果写数据库什么的，这些都是未知。还记的在统一下单接口中有个必须参数就是 `notify_url : NOTIFY_URL,// 微信付款后的回调地址` 这个地址是用户传递给微信的， 微信在收到用户的付款后会以 **post** 的方式请求这个接口，微信会传递用户付款的信息过来， 不过是 xml 格式的。
 类系这样的 xml 格式：
@@ -248,7 +248,7 @@ res.err_msg == "get_brand_wcpay_request：ok" ，这样就是成功了， 但是
             });
         });`
                 
-#####就到这里吧， 感觉也差不多了。如有不对的地方还请指正。
+#### 就到这里吧， 感觉也差不多了。如有不对的地方还请指正。
     
 
     
