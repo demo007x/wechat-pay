@@ -231,6 +231,23 @@ res.err_msg == "get_brand_wcpay_request：ok" ，这样就是成功了， 但是
 这样你就可以正常的获取到微信的 xml 数据了。
 
 --------
+#### 使用方法：
+    
+    `pay.getAccessToken({
+            notify_url : 'http://demo.com/', //微信支付完成后的回调
+            out_trade_no : new Date().getTime(), //订单号
+            attach : '名称',
+            body : '购买信息',
+            total_fee : '1', // 此处的额度为分
+            spbill_create_ip : req.connection.remoteAddress,
+        }, function (error, responseData) {
+            res.render('payment', {
+                title : '微信支付',
+                wxPayParams : JSON.stringify(responseData),
+                //userInfo : userInfo
+            });
+        });`
+                
 #####就到这里吧， 感觉也差不多了。如有不对的地方还请指正。
     
 
